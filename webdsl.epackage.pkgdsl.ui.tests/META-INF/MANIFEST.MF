@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: webdsl.epackage.pkgdsl.ui.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: webdsl.epackage.pkgdsl.ui.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: webdsl.epackage.pkgdsl.ui.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: webdsl.epackage.pkgdsl.ui,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.ui.testing,
+ org.eclipse.ui.workbench;resolution:=optional
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: webdsl.epackage.pkgdsl.ui.tests;x-internal=true

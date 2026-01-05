@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: webdsl.epackage.pkgdsl
+Bundle-ManifestVersion: 2
+Bundle-Name: webdsl.epackage.pkgdsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: webdsl.epackage.pkgdsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: webdsl.epackage.pkgdsl.services,
+ webdsl.epackage.pkgdsl.pkgDsl,
+ webdsl.epackage.pkgdsl.serializer,
+ webdsl.epackage.pkgdsl,
+ webdsl.epackage.pkgdsl.pkgDsl.util,
+ webdsl.epackage.pkgdsl.scoping,
+ webdsl.epackage.pkgdsl.parser.antlr.internal,
+ webdsl.epackage.pkgdsl.pkgDsl.impl,
+ webdsl.epackage.pkgdsl.generator,
+ webdsl.epackage.pkgdsl.parser.antlr,
+ webdsl.epackage.pkgdsl.validation
+Import-Package: org.apache.log4j

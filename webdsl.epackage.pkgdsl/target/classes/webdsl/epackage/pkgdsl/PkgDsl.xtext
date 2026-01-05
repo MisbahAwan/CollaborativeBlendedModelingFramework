@@ -1,0 +1,232 @@
+grammar webdsl.epackage.pkgdsl.PkgDsl with org.eclipse.xtext.common.Terminals
+
+generate pkgDsl "http://www.epackage.webdsl/pkgdsl/PkgDsl"
+
+File: (ea_package += EA_Package)*
+	   ((timing += Timing)*)?;
+
+EA_Package: (define=ID 'Top-Package {')?
+    ('UUID:'  uuid=STRING)?
+	('SHORT-NAME:' shortname=STRING)?
+	('CATEGORY:' category=STRING)?
+	('NAME:' name=STRING)?
+	((subpackages += Sub_Package)*)?
+	(elements += Elements)* '}';
+	  
+Sub_Package: define=ID 'Sub-Package {' 
+	(nested_package += Nested_Package)*'}';
+
+Nested_Package: define=ID 'Package {' 
+	 'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	(subpackages += Sub_Package)*
+	(element += Element)*'}';
+
+Element: define=ID 'Element {' 
+	 (ea_numerical += EA_Numerical)*
+     (unit += Unit)*
+	(qunatity += Quantity)*
+	(timing += Timing)*'}';
+
+Elements: define=ID 'Element {'
+	(ea_numerical += EA_Numerical)*
+    (unit += Unit)*
+	(qunatity += Quantity)*  
+	((timing += Timing)*)?'}';
+
+Timing: define=ID 'Timing {' 
+	 'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	('TRACEABLE-SPECIFICATION-REFS:' traceable_specification=STRING)?
+	(descriptions += Descriptions)*
+	(constraints += Constraints)*'}';
+
+Constraints: define=ID 'Constraints {' 
+	(periodic_constraint += Periodic_Constraint)*
+	(delay_constraint += Delay_Constraint)*
+	(age_constraint += Age_Constraint)*
+	(execution_time_constraint += Execution_Time_Constraint)*
+	(order_constraint += Order_Constraint)*
+	(pattern_constraint += Pattern_Constraint)*
+	(reaction_constraint += Reaction_Constraint)*
+	
+	'}';
+
+Reaction_Constraint: define=ID 'Reaction-Constraint {' 
+	 'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'SCOPE:' scope=STRING
+	(timingexpression += RC_TimingExpression)*'}';
+
+RC_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+
+Pattern_Constraint:  define=ID 'Pattern-Constraint {' 
+    'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'EVENT:' event=STRING 
+	(timingexpression += Pattern_Constraint_TimingExpression)*'}';
+	
+Pattern_Constraint_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+
+Order_Constraint: define=ID 'Order-Constraint {' 
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'TARGET:' target=STRING
+	'SOURCE:' source=STRING'}';
+	
+Execution_Time_Constraint: define=ID 'Execution-Time-Constraint {'
+	 'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	('RESUME-REFS:' resume_ref=STRING)?
+	('PREEMPTION-REFS:' preemption_refs=STRING)?
+	'START:' start=STRING
+	'STOP:' stop=STRING
+	(timingexpression += ETC_TimingExpression)*'}';
+	
+ETC_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+
+Age_Constraint: define=ID 'Age-Constraint {' test=test1;
+
+test1:  
+	 'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'SCOPE:' scope=STRING
+	(timingexpression += AC_TimingExpression)*'}';
+
+AC_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+	
+Delay_Constraint: define=ID 'Delay-Constraint {' 
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'TARGET:' target=STRING
+	'SOURCE:' source=STRING
+	(timingexpression += DC_TimingExpression)*'}';
+
+DC_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+
+Periodic_Constraint: define=ID 'Periodic-Constraint {' 
+    'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'EVENT:' event=STRING
+	(timingexpression += PC_TimingExpression)*'}';
+	
+PC_TimingExpression: define=ID 'Timing Expression {'
+	 'NAME:' name=STRING
+	 'TYPE:' type=STRING
+	 'Value:' value=STRING
+	'}'
+;
+
+Descriptions: define=ID 'Events {'
+	(event_function += Event_Function)*
+	(event_function_flow_port += Event_Function_Flow_Port)*
+	(event_chain += Event_Chain)*'}';
+
+Event_Chain: define=ID 'Event-Chain {'
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	 ('SEGMENT-REFS:' segment_ref=STRING)?
+	'STIMULUS:' stimulus=STRING
+	'RESPONSE:' response=STRING'}';
+
+Event_Function_Flow_Port: define=ID 'Event-Function-Flow-Port {'
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	'FUNCTION-TYPE:' func_type=STRING
+	'FUNCTION-VALUE:' func_value=STRING
+	'FUNCTION-PROTOTYPE:' func_prototype=STRING
+	'FUNCTION-FLOW-PORT:' func_flow_port=STRING'}'; 
+
+Event_Function: define=ID 'Event-Function {'
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+    'FUNCTION-TYPE:' func_type=STRING
+    'FUNCTION-VALUE:' func_value=STRING
+    'FFUNCTION-PROTOTYPE-TARGET:' func_prototype_target=STRING
+	'FUNCTION-PROTOTYPE-CONTEXT:' func_prototype_context=STRING'}';
+
+Unit: define=ID 'Unit {'
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	 ('FACTOR:' factor=STRING)?
+	 ('SYMBOL:' symbol=STRING)?
+	 ('OFFSET:' offset=STRING)?
+	'QUNATITY:' quantity=STRING'}';
+
+Quantity: define=ID 'Quantity {'
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	('AMOUNT-OF-SUBSTANCE-EXP:' substance_exp=INT)? 
+	('ELECTRIC-CURRENT-EXP:' current_exp=INT)?
+	('LENGTH-EXP:' length_exp=INT)?
+	('LUMINOUS-INTENSITY-EXP:' intensity_exp=INT)?
+	('MASS-EXP:' mass_exp=INT)?
+	('THERMODYNAMIC-TEMPERATURE-EXP:' temp_exp=INT)?
+	('TIME-EXP:' time_exp=INT)?	
+		'}';
+
+EA_Numerical: define=ID 'EA_Numerical {' 
+	'UUID:'  uuid=STRING 
+	'SHORT-NAME:' shortname=STRING
+	'CATEGORY:' category=STRING
+	'NAME:' name=STRING
+	('TEXT:' text=STRING)?
+	('MAX:' max=STRING)?
+	('MIN:' min=STRING)?
+	'UNIT-OF-DATA:' data_unit=STRING'}';
+
+
+ 

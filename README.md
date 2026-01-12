@@ -1,6 +1,6 @@
 # AI-Augmented Collaborative Blended Modeling Environment
-User & Developer Manual
-1. Overview
+# User & Developer Manual
+# 1. Overview
 
 This repository contains the web-based collaborative modeling environment developed as part of the research work titled:
 
@@ -11,7 +11,7 @@ The system enables real-time multi-user collaboration over EAST-ADL–inspired t
 ⚠️ Note:
 The desktop graphical environment (EATOP-based editor) is proprietary and therefore not open-sourced. This repository contains the complete web collaborative environment, backend services, and XAI log pipeline.
 
-2. System Requirements
+# 2. System Requirements
 Software:
 
 Java 17+
@@ -30,7 +30,7 @@ Ollama (local LLM runtime)
 
 Supported models: llama3, codellama, tinyllama
 
-4. Installation & Setup
+# 3. Installation & Setup
 Step 1 – Clone the Repository
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>

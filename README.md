@@ -12,7 +12,7 @@ The system enables real-time multi-user collaboration over EAST-ADL–inspired t
 The desktop graphical environment (EATOP-based editor) is proprietary and therefore not open-sourced. This repository contains the complete web collaborative environment, backend services, and XAI log pipeline.
 
 # 2. System Requirements
-Software:
+**Software:**
 
 Java 17+
 
@@ -24,18 +24,18 @@ MySQL 8.0+
 
 Git
 
-For XAI Module:
+**For XAI Module:**
 
 Ollama (local LLM runtime)
 
 Supported models: llama3, codellama, tinyllama
 
 # 3. Installation & Setup
-Step 1 – Clone the Repository
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+**Step 1 – Clone the Repository**
+git clone https://github.com/MisbahAwan/CollaborativeBlendedModelingFramework.git
+cd <CollaborativeBlendedModelingFramework>
 
-Step 2 – Database Setup
+**Step 2 – Database Setup**
 
 Create a database:
 
@@ -46,7 +46,7 @@ Import schema:
 
 mysql -u root -p bumble_db < database/schema.sql
 
-Step 3 – Backend Services
+**Step 3 – Backend Services**
 cd backend
 mvn clean install
 mvn spring-boot:run
@@ -62,7 +62,7 @@ Persistence Service
 
 Logging Service
 
-Step 4 – Frontend (Web Editor)
+**Step 4 – Frontend (Web Editor)**
 cd frontend
 npm install
 npm start
@@ -70,9 +70,9 @@ npm start
 
 Access at:
 
-http://localhost:3000
+http://localhost:8080
 
-Step 5 – XAI Log Engine (Optional but Recommended)
+**Step 5 – XAI Log Engine (Optional but Recommended)**
 
 Install Ollama
 

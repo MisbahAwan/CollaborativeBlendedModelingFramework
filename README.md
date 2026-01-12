@@ -15,13 +15,74 @@ The desktop graphical environment (EATOP-based editor) is proprietary and theref
 Software:
 
 Java 17+
+
 Node.js 18+
+
 Maven 3.8+
+
 MySQL 8.0+
+
 Git
 
 For XAI Module:
 
 Ollama (local LLM runtime)
+
 Supported models: llama3, codellama, tinyllama
+
+4. Installation & Setup
+Step 1 – Clone the Repository
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+
+Step 2 – Database Setup
+
+Create a database:
+
+CREATE DATABASE bumble_db;
+
+
+Import schema:
+
+mysql -u root -p bumble_db < database/schema.sql
+
+Step 3 – Backend Services
+cd backend
+mvn clean install
+mvn spring-boot:run
+
+
+This will start:
+
+Role Service
+
+Merge Service
+
+Persistence Service
+
+Logging Service
+
+Step 4 – Frontend (Web Editor)
+cd frontend
+npm install
+npm start
+
+
+Access at:
+
+http://localhost:3000
+
+Step 5 – XAI Log Engine (Optional but Recommended)
+
+Install Ollama
+
+Pull model:
+
+ollama pull llama3
+
+
+Start XAI service:
+
+cd xai-engine
+python app.py
 

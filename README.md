@@ -83,6 +83,94 @@ ollama pull llama3
 
 Start XAI service:
 
-cd xai-engine
-python app.py
+# 4. Collaborative Workflow
 
+User logs in
+
+Opens or creates a model
+
+Edits in real-time (EAText)
+
+Auto-save every 10 seconds
+
+Changes are:
+
+validated
+
+merged
+
+versioned
+
+logged with metadata
+
+# 5. Conflict Handling & Merge Logic
+
+Conflicts are handled using:
+
+Scope rules (MR-2)
+
+Validity rules (MR-3)
+
+Precedence rules (MR-4)
+
+Provenance embedding (MR-5)
+
+All conflicts are either:
+
+Auto-resolved
+
+Quarantined
+
+Or flagged for manual review
+
+# 6. XAI Log Analysis
+
+The XAI module:
+
+Reads collaboration logs
+
+Applies rule-based filtering
+
+Generates natural language summaries using local LLMs
+
+Example output:
+
+“User martin renamed ExecutionTimeConstraint ETC12345 to ETC1234 and removed obsolete timing fields.”
+
+This supports:
+
+Managerial oversight
+
+Design reviews
+
+Audit trails
+
+# 7. Auto-Save, Versioning & Recovery
+
+Auto-save every 10 seconds
+
+Manual save option available
+
+Each snapshot is:
+
+timestamped
+
+user-tagged
+
+session-bound
+
+Offline edits are:
+
+restored on reconnection
+
+marked as provisional
+
+merged only after approval
+
+# 8. Contact
+
+For questions, collaboration, or industrial deployment:
+
+Misbah Mehboob Awan
+PhD Researcher – NUST
+Email: mmehboob.cse19ceme@ce.ceme.edu.pk

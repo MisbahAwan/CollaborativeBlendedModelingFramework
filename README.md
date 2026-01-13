@@ -39,40 +39,20 @@ cd <CollaborativeBlendedModelingFramework>
 
 Create a database:
 
-CREATE DATABASE bumble_db;
+CREATE DATABASE xtextdb;
 
 
 Import schema:
 
-mysql -u root -p bumble_db < database/schema.sql
+mysql -u root -p xtextdb < database/schema.sql
 
-**Step 3 – Backend Services**
-cd backend
-mvn clean install
-mvn spring-boot:run
-
-
-This will start:
-
-Role Service
-
-Merge Service
-
-Persistence Service
-
-Logging Service
-
-**Step 4 – Frontend (Web Editor)**
-cd frontend
-npm install
-npm start
-
+**Step 3 – Web Editor**
 
 Access at:
 
-http://localhost:8080
+http://localhost:8080/Login.html
 
-**Step 5 – XAI Log Engine (Optional but Recommended)**
+**Step 4 – XAI Log Engine (Optional but Recommended)**
 
 Install Ollama
 
